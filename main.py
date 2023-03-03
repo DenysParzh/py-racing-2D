@@ -4,14 +4,15 @@ import math
 # Initialize Pygame
 pygame.init()
 
-# Set up the window
-screen_width = 1280
-screen_height = 720
-screen = pygame.display.set_mode((screen_width, screen_height))
-
 # Load the car image
 car_img = pygame.image.load('assets/images/car.png')
 track_img = pygame.image.load('assets/images/track.png')
+
+# Set up the window
+screen_width = track_img.get_width()
+screen_height = track_img.get_height()
+screen = pygame.display.set_mode((screen_width, screen_height))
+
 # Set up the car's initial position, speed and angle
 car_x = screen_width // 2
 car_y = screen_height // 2
@@ -21,23 +22,6 @@ car_angle = 0
 # Set up the game clock
 clock = pygame.time.Clock()
 
-# Update the car's position and angle based on the keys being pressed
-# if keys[pygame.K_UP]:
-#     car_speed += 0.1
-#
-# if keys[pygame.K_DOWN]:
-#     car_speed -= 0.1
-#
-# if car_speed > 0:
-#     if keys[pygame.K_LEFT]:
-#         car_angle += 1
-#     if keys[pygame.K_RIGHT]:
-#         car_angle -= 1
-# elif car_speed < 0:
-#     if keys[pygame.K_LEFT]:
-#         car_angle -= 1
-#     if keys[pygame.K_RIGHT]:
-#         car_angle += 1
 MAX_SPEED = 5
 MIN_SPEED = -5
 ACCELERATION = 0.1
@@ -65,7 +49,8 @@ while True:
     elif keys[pygame.K_RIGHT]:
         car_angle -= TURN_SPEED * car_speed / MAX_SPEED
 
-    car_speed = max(min(car_speed, MAX_SPEED), MIN_SPEED)
+    # car_speed = max(min(car_speed, MAX_SPEED), MIN_SPEED)
+
     # Update the car's position and angle based on its speed and angle
     car_x += math.cos(math.radians(car_angle)) * car_speed
     car_y -= math.sin(math.radians(car_angle)) * car_speed
