@@ -21,6 +21,28 @@ car_angle = 0
 # Set up the game clock
 clock = pygame.time.Clock()
 
+# Update the car's position and angle based on the keys being pressed
+# if keys[pygame.K_UP]:
+#     car_speed += 0.1
+#
+# if keys[pygame.K_DOWN]:
+#     car_speed -= 0.1
+#
+# if car_speed > 0:
+#     if keys[pygame.K_LEFT]:
+#         car_angle += 1
+#     if keys[pygame.K_RIGHT]:
+#         car_angle -= 1
+# elif car_speed < 0:
+#     if keys[pygame.K_LEFT]:
+#         car_angle -= 1
+#     if keys[pygame.K_RIGHT]:
+#         car_angle += 1
+MAX_SPEED = 5
+MIN_SPEED = -5
+ACCELERATION = 0.1
+TURN_SPEED = 1
+
 # Game loop
 while True:
     # Handle events
@@ -31,28 +53,6 @@ while True:
 
     # Get the keys currently being pressed
     keys = pygame.key.get_pressed()
-
-    # Update the car's position and angle based on the keys being pressed
-    # if keys[pygame.K_UP]:
-    #     car_speed += 0.1
-    #
-    # if keys[pygame.K_DOWN]:
-    #     car_speed -= 0.1
-    #
-    # if car_speed > 0:
-    #     if keys[pygame.K_LEFT]:
-    #         car_angle += 1
-    #     if keys[pygame.K_RIGHT]:
-    #         car_angle -= 1
-    # elif car_speed < 0:
-    #     if keys[pygame.K_LEFT]:
-    #         car_angle -= 1
-    #     if keys[pygame.K_RIGHT]:
-    #         car_angle += 1
-    MAX_SPEED = 5
-    MIN_SPEED = -5
-    ACCELERATION = 0.1
-    TURN_SPEED = 1
 
     if keys[pygame.K_UP]:
         car_speed = min(car_speed + ACCELERATION, MAX_SPEED)
