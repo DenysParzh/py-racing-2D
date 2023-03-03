@@ -1,7 +1,7 @@
 import pygame
 import math
 
-from constants import ACCELERATION, MAX_SPEED, MIN_SPEED, FPS, TURN_SPEED, FRICTION
+from constants import ACCELERATION_BACK, ACCELERATION, MAX_SPEED, MIN_SPEED, FPS, TURN_SPEED, FRICTION
 from utils import scale_image
 
 # Initialize Pygame
@@ -39,7 +39,7 @@ while True:
     if keys[pygame.K_UP]:
         car_speed = min(car_speed + ACCELERATION, MAX_SPEED)
     elif keys[pygame.K_DOWN]:
-        car_speed = max(car_speed - ACCELERATION, MIN_SPEED)
+        car_speed = max(car_speed - ACCELERATION_BACK, MIN_SPEED)
     else:
         if car_speed > 0:
             car_speed -= FRICTION
