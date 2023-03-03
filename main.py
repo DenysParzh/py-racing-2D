@@ -1,5 +1,7 @@
 import pygame
 import math
+
+from constants import ACCELERATION, MAX_SPEED, MIN_SPEED, FPS, TURN_SPEED, FRICTION
 from utils import scale_image
 
 # Initialize Pygame
@@ -7,12 +9,12 @@ pygame.init()
 
 # Load the car image
 car_img = scale_image(pygame.image.load('assets/images/car.png'), 0.4)
-track_img = scale_image(pygame.image.load('assets/images/track.png'), 1.3)
+track_img = pygame.image.load('assets/images/track.png')
 
 # Set up the window
 screen_width = track_img.get_width()
 screen_height = track_img.get_height()
-screen = pygame.display.set_mode((screen_width, screen_height))
+screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
 
 # Set up the car's initial position, speed and angle
 car_x = screen_width // 2
@@ -22,12 +24,6 @@ car_angle = 0
 
 # Set up the game clock
 clock = pygame.time.Clock()
-
-MAX_SPEED = 5
-MIN_SPEED = -5
-ACCELERATION = 0.1
-TURN_SPEED = 2
-FRICTION = 0.05
 
 # Game loop
 while True:
@@ -74,4 +70,4 @@ while True:
     pygame.display.flip()
 
     # Tick the clock
-    clock.tick(60)
+    clock.tick(FPS)
