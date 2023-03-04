@@ -1,9 +1,7 @@
 import math
-import pygame
 
-from utils import blit_rotate, scale_image, create_tire_track
-
-CAR_IMG = scale_image(pygame.image.load('assets/images/car.png'), 0.4)
+from loader import CAR_IMG
+from screen_update import create_tire_track, blit_rotate
 
 
 class AbstractCar:

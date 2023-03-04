@@ -1,21 +1,8 @@
 import pygame
 
-from car import Car
 from constants import MAX_SPEED, MIN_SPEED, FPS, TURN_SPEED
-
-# Initialize Pygame
-pygame.init()
-
-# Load the track image
-track_img = pygame.image.load('assets/images/track.png')
-
-# Set up the window
-screen_width = track_img.get_width()
-screen_height = track_img.get_height()
-screen = pygame.display.set_mode((screen_width, screen_height))  # pygame.FULLSCREEN
-
-# Set up the game clock
-clock = pygame.time.Clock()
+from loader import screen, images
+from car import Car
 
 
 def draw(screen, images, player_car):
@@ -46,13 +33,16 @@ def move_player(player_car):
         player_car.reduce_speed()
 
 
-# static images
-images = [(track_img, (0, 0))]
+def main():
+    # Initialize Pygame
+    pygame.init()
 
-# create car
-player_car = Car(MAX_SPEED, MIN_SPEED, TURN_SPEED)
+    # Set up the game clock
+    clock = pygame.time.Clock()
 
-if __name__ == "__main__":
+    # create car
+    player_car = Car(MAX_SPEED, MIN_SPEED, TURN_SPEED)
+
     # Game loop
     while True:
 
@@ -70,3 +60,7 @@ if __name__ == "__main__":
 
         # Tick the clock
         clock.tick(FPS)
+
+
+if __name__ == "__main__":
+    main()
