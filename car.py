@@ -1,7 +1,9 @@
 import math
 
+import pygame
+
 from loader import CAR_IMG
-from screen_update import create_tire_track, blit_rotate
+from screen_update import create_tire_track, blit_rotate, remove_old_tire_tracks
 
 
 class AbstractCar:
