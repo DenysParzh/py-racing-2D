@@ -1,7 +1,7 @@
 import math
 import pygame
 
-from utils import blit_rotate, scale_image
+from utils import blit_rotate, scale_image, create_tire_track
 
 CAR_IMG = scale_image(pygame.image.load('assets/images/car.png'), 0.4)
 
@@ -15,14 +15,17 @@ class AbstractCar:
         self.min_vel = r_max_vel
         self.vel = 0
         self.angle = 0
-        self.acceleration = 0.3
-        self.acceleration_back = 0.1
+        self.acceleration = 0.1
+        self.acceleration_back = 0.05
 
     def rotate(self, left=False, right=False):
         if left:
             self.angle += self.rotation_vel * self.vel / self.max_vel
         elif right:
             self.angle -= self.rotation_vel * self.vel / self.max_vel
+
+        if self.vel == self.max_vel:
+            create_tire_track((self.x, self.y), self.angle, 200)
 
     def draw(self, screen):
         blit_rotate(screen, self.img, (self.x, self.y), self.angle)
