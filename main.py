@@ -16,15 +16,23 @@ def draw(screen, images, player_car):
 def move_player(player_car):
     keys = pygame.key.get_pressed()
     moved = False
-
+    drift = False
+    sides = ''
     if keys[pygame.K_a]:
+        sides = "left"
         player_car.rotate(left=True)
+
     elif keys[pygame.K_d]:
+        sides = "right"
         player_car.rotate(right=True)
+
+    if keys[pygame.K_SPACE]:
+        drift = True
+        player_car.drift(sides)
 
     if keys[pygame.K_w]:
         moved = True
-        player_car.move_forward()
+        player_car.move_forward(drift)
     elif keys[pygame.K_s]:
         moved = True
         player_car.move_backward()
